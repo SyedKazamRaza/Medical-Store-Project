@@ -67,6 +67,7 @@ router.get('/showAll',async (req,res)=>{
     const result = await User.find()
                     .populate('details');
     res.send(result)
+    //sending the result
     
 })
 
