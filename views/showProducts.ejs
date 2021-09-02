@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+    <title>Show Products</title>
+</head>
+<body>
+
+    <% if(allProducts.length !=0) { %>
+        <h2 style="color: red;">All Available Medicines</h2>
+        <table class="table">
+            <thead style="background-color: skyblue;">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Medicine Name</th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price per Unit</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col"></th>
+
+                </tr>
+            </thead>
+            <tbody style="background-color: sandybrown;">
+                <% temp = 1 %>
+                <% allProducts.forEach(element=> { %>
+                    <tr>
+                        <th scope="row">
+                            <%= temp %>
+                        </th>
+                        <td>
+                            <%= element.prodName %>
+                        </td>
+                        <td>
+                            <%= element.unit %>
+                        </td>
+                        <td>
+                            <%= element.category %>
+                        </td>
+                        <td>
+                            <%= element.price %>
+                        </td>
+                        <td>
+                            <%= element.description %>
+                        </td>
+                        <form action="/customer/addToCart/<%= element._id %>" method="post">
+                        <td>
+                            <input type="number" name="quantity" id="quantity" min="0">
+                        </td>
+                        <td>
+                            <input type="submit"  value="Add to Cart">
+                        </td>
+                        </form>
+                    </tr>
+                    <% temp += 1 %>
+                    <% }); %>
+            </tbody>
+        </table>
+
+        <% } %>
+
+        <form action="/customer/orderNow" method="post">
+            <input type="submit" value="Order Now">
+        </form>
+
+        <% if(message) { %>
+            <h3 style="color: red;"><%= message %></h3>
+        <% } %>
+
+        <script>
+            function check() {
+                alert(document.getElementById('quantity'))
+                if(document.getElementById('quantity').value == 0){
+                    alert('Please select Quantity of products.')
+                }
+                
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

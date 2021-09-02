@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+</head>
+<body>
+    <h2 style="color: blue;"></h2><br>
+    <form action="/user/login" method="post">
+        <label for="username">Enter Username: </label>
+        <input type="text" name="username" id="username" required><br><br>
+
+        <label for="pass">Enter Password: </label>
+        <input type="password" name="pass" id="pass" required>
+        <br><br>
+
+        <input type="radio" name="customer" id="customer" value="Customer">
+        <label for="customer">Customer</label>
+        <input type="radio" name="admin" id="admin" value="Admin">
+        <label for="admin">Admin</label>
+        <br>
+        <input type="submit" value="Login">
+
+    </form>
+
+    <% if(notExist) { %>
+        <h3 style="color: red;">Invalid Username or password</h3>
+    <% } %>
+
+    <script>
+        function show(params) {
+            const password = document.getElementById('pass');
+            // const passw = password.toString()
+            document.getElementById('pass').innerText = passw;
+        }
+    </script>
+</body>
+</html>

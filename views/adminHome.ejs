@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Admin Home</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/user/logout">Log Out</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="/user/adminHome">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/user/showAllCustomers">Customers</a>
+                <a class="nav-item nav-link" href="/product/showAllProducts">Products</a>
+                <a class="nav-item nav-link" href="/adminorders/showOrders">Orders</a>
+            </div>
+        </div>
+    </nav>
+
+    <a href="/product/addProduct">Add New Product</a>
+
+    <h3>Admin Home Page</h3>
+    <% if(allCustomers.length !=0) { %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Usertype</th>
+                    <th scope="col">Customer name</th>
+                    <th scope="col">Phone #</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Home address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% temp = 1 %>
+                <% allCustomers.forEach(element=> { %>
+                    <tr>
+                        <th scope="row">
+                            <%= temp %>
+                        </th>
+                        <td>
+                            <%= element.username %>
+                        </td>
+                        <td>
+                            <%= element.password %>
+                        </td>
+                        <td>
+                            <%= element.userType %>
+                        </td>
+                        <td>
+                            <%= element.details.name %>
+                        </td>
+                        <td>
+                            <%= element.details.phone %>
+                        </td>
+                        <td>
+                            <%= element.details.age %>
+                        </td>
+                        <td>
+                            <%= element.details.address %>
+                        </td>
+                    </tr>
+                    <% temp += 1 %>
+                    <% }); %>
+            </tbody>
+        </table>
+
+        <% } %>
+
+        <!--Show all Products-->
+        <% if(allProducts.length !=0) { %>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Unit</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Price per Unit</th>
+                        <th scope="col">Description</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% temp = 1 %>
+                    <% allProducts.forEach(element=> { %>
+                        <tr>
+                            <th scope="row">
+                                <%= temp %>
+                            </th>
+                            <td>
+                                <%= element.prodName %>
+                            </td>
+                            <td>
+                                <%= element.unit %>
+                            </td>
+                            <td>
+                                <%= element.category %>
+                            </td>
+                            <td>
+                                <%= element.price %>
+                            </td>
+                            <td>
+                                <%= element.description %>
+                            </td>
+                            <td>
+                                <button onclick="showUpdate()">Update</button>
+                            </td>
+                            <td>
+                                <a href="/product/deleteProduct/<%= element._id %>">Delete</a>
+                            </td>
+                        </tr>
+                        <% temp += 1 %>
+                        <% }); %>
+                </tbody>
+            </table>
+    
+            <% } %>
+
+            <script>
+                function showUpdate() {
+                    alert('clicked')
+                }
+            </script>
+
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+</body>
+
+</html>

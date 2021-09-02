@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div style="margin: auto auto;">
+        <h3>Create New Account</h3>
+        <form action="/user/signup" method="post">
+            <label for="username">Enter Username</label>
+            <input type="text" name="username" id="username" minlength="5" required><br>
+            <label for="pass">Enter Password</label>
+            <input type="password" name="pass" id="pass" minlength="5" required><br>
+
+            <label for="nm">Enter Full Name: </label>
+            <input type="text" name="nm" id="nm" minlength="6" required><br>
+            <label for="tele">Enter Phone # </label>
+            <input type="tel" name="tele" id="tele" placeholder="xxxx-xxxxxxx" minlength="12" maxlength="12"><br>
+            
+            <label for="age">Enter Age: </label>
+            <input type="number" name="age" id="age" minlength="2" required><br>
+            <label for="address">Enter Home Address: </label>
+            <input type="text" name="address" id="address" minlength="6" required><br>
+
+            <input type="submit" value="Create Account">
+        </form>
+
+        <% if(alreadyExist) { %>
+            <h3 style="color: red;">Username already Exist.</h3>
+        <% } %>
+
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Show Order</title>
+</head>
+
+<body style="background-color: cyan;">
+
+    <h3 style="color: mediumblue;">Order Details & Total bill</h3>
+    <h5 style="color: red;">Order date:</h5>
+    <p>( <%= orderData.date %> )</p>
+
+    <div style="margin-left: 30%; margin-top: 10%;">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header" style="color: orange;">Order Details</div>
+            <div class="card-body">
+                <h4 class="card-title" style="color: red;">
+                    Total Bill: <%= orderData.totalBill %>
+                </h5>
+                <% count = 0 %>
+                <p class="card-text">
+                        <% (orderData.products).forEach(element=> { %>
+                            <%= count +=1 %>:
+                                <%= element %>
+                                    <br>
+                                    <% }); %>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

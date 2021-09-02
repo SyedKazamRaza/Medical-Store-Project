@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+</head>
+<body>
+    <h2 style="color: red;">Add New Product</h2>
+
+    <form action="/product/addNewProduct" method="post">
+        <label for="name">Product Name: </label>
+        <input type="text" class="form-control"  name="name" id="name" required><br><br>
+
+        <label for="unit">Unit: </label>
+        <input type="text" class="form-control"  name="unit" id="unit" placeholder="-- ml / mg etc" required><br><br>
+
+        <label for="category">Product Category: </label>
+        <select name="category" id="category">
+            <option value="serup">Serup</option>
+            <option value="tablet">Tablet</option>
+            <option value="injection">Injection</option>
+            <option value="capsule">Capsule</option>
+            <option value="drip">Drip</option>
+            <option value="others">Others</option>
+        </select>
+        <br><br>
+        <label for="price">Product Price: </label>
+        <input type="text"  class="form-control"  name="price" id="price" required><br><br>
+        
+        <label for="desc">Add Description: </label>
+        <br><br>
+        <textarea name="desc" id="desc" cols="20" rows="7"></textarea>
+        <br><br>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Product Image: </label>
+            <input type="file" name:"img" class="form-control-file" id="exampleFormControlFile1">
+        </div>
+
+        <br><br>
+        
+        <input type="submit" value="Add Product">
+    </form>
+</body>
+</html>
